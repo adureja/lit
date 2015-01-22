@@ -1,0 +1,14 @@
+body {
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+}
+
+#myCanvas {
+	background-color: grey;
+	border: 2px solid black;
+	width: 600px;
+	height: 600px;
+	text-align: left;
+	margin: 50px;
+}
