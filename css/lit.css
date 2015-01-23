@@ -2,7 +2,7 @@ body {
 	margin: 10px;
 	padding: 10px;
 	text-align: center;
-	background-color: #8AC007
+	background-color: #445C8F
 }
 
 canvas {
@@ -11,8 +11,8 @@ canvas {
 }
 
 #myCanvas {
-	background-color: grey;
-	border: 2px solid black;
+	background-color: #694291;
+	border: 5px solid black;
 	width: 600px;
 	height: 600px;
 	text-align: left;
