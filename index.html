@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-  <link href="css/lit.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/lit.css">
   </head>
    <body>
     <div id="main" width="1000"> 
       <div class="game">
-      <canvas id="myCanvas"></canvas>
+      <canvas id="myCanvas" width="600" height="600"></canvas>
       <script>
         window.requestAnimFrame = (function(callback) {
           return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
@@ -21,18 +21,23 @@
           borderWidth: 5,
           centerX: 300,
           centerY: 300,
-          radius: 70
+          radius: 75
         };
         var period = 5000;
 
+        var dirX = (Math.random() * 2) - 1;
+        if (dirX >= 0) dirX = 1;
+        else dirX = -1;
+
+        var dirY = (Math.random() * 2) - 1;
+        if (dirY >= 0) dirY = 1;
+        else dirY = -1;
 
         function drawCircle(myCircle, context) {
           context.beginPath();
           context.arc(myCircle.centerX, myCircle.centerY, myCircle.radius, 0, 2 * Math.PI, false);
-          context.fillStyle = 'green';
+          context.fillStyle = 'red';
           context.fill();
-          context.strokeStyle = 'black';
-          context.stroke();
         }
 
         function animate(myCircle, canvas, context, startTime) {
@@ -43,11 +48,11 @@
           // in ms
 
           var centerXX = canvas.width / 2;
-          var nextX = amplitude * Math.sin(time * 2 * Math.PI / period) + centerXX;
+          var nextX = (dirX * amplitude * Math.sin(time * 2 * Math.PI / (period - 500))) + centerXX;
           myCircle.centerX = nextX;
 
-          var centerYY = canvas.width / 2;
-          var nextY = amplitude * Math.sin(time * 2 * Math.PI / (period + 200)) + centerYY;
+          var centerYY = canvas.height / 2;
+          var nextY = (dirY * amplitude * Math.sin(time * 2 * Math.PI / (period + 2000))) + centerYY;
           myCircle.centerY = nextY;
 
           // clear
@@ -56,7 +61,7 @@
           // draw
           drawCircle(myCircle, context);
 
-          period -= 0.5;
+          period -= 1;
           myCircle.radius = (((period/2)*3)/100) - 10;
 
           // request new frame
